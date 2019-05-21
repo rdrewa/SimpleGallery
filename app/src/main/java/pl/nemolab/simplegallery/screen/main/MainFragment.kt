@@ -1,5 +1,6 @@
 package pl.nemolab.simplegallery.screen.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import pl.nemolab.simplegallery.databinding.FragmentMainBinding
+import pl.nemolab.simplegallery.screen.item.DetailsActivity
 import pl.nemolab.simplegallery.screen.main.adapter.PhotoAdapter
 
 class MainFragment: Fragment() {
@@ -50,7 +52,10 @@ class MainFragment: Fragment() {
     private fun subscribe() {
         viewModel.photoList.observe(this, Observer { photoList ->
             photoList?.let {
-                binding.recycler.adapter = PhotoAdapter(context!!, photoList)
+                binding.recycler.adapter = PhotoAdapter(context!!, photoList) {
+                    startActivity(Intent(this@MainActivity, DetailsActivity::class.java),
+                        0)
+                }
                 binding.recycler.adapter?.notifyDataSetChanged()
             }
         })

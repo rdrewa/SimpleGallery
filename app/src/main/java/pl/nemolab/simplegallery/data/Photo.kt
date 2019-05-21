@@ -1,7 +1,7 @@
 package pl.nemolab.simplegallery.data
 
 import com.google.gson.annotations.SerializedName
-
+import java.io.Serializable
 
 data class Photo(
     val id: String,
@@ -19,4 +19,4 @@ data class Photo(
     val tags: String,
     @SerializedName("url_s")
     val url: String
-)
+) : Serializable

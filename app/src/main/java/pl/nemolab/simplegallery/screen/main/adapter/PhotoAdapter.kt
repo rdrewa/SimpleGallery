@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import pl.nemolab.simplegallery.data.Photo
 import pl.nemolab.simplegallery.databinding.ItemPhotoBinding
 
-class PhotoAdapter(val context: Context, val items: List<Photo>): RecyclerView.Adapter<PhotoAdapter.PhotoHolder>() {
+class PhotoAdapter(val context: Context, val items: List<Photo>, private val clickAction: (Photo) -> (Unit)): RecyclerView.Adapter<PhotoAdapter.PhotoHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PhotoHolder(
         ItemPhotoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
