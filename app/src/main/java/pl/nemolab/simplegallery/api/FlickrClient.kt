@@ -14,11 +14,12 @@ object FlickrClient {
         val gson = GsonBuilder()
             .setLenient()
             .create()
+
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         val client = OkHttpClient.Builder()
             .addInterceptor(interceptor)
-            .addInterceptor(ApiKeyInterceptor(FlickrService.API_KEY_NAME, FlickrService.API_KEY_VALUE))
+            .addInterceptor(ParametersInterceptor(prepareConfiguration()))
             .build()
 
         val retrofit = Retrofit.Builder()
@@ -31,4 +32,10 @@ object FlickrClient {
 
         return retrofit.create(FlickrService::class.java)
     }
+
+    private fun prepareConfiguration() = mapOf(
+        "api_key" to FlickrService.API_KEY,
+        "format" to "json",
+        "nojsoncallback" to "1"
+        )
 }
