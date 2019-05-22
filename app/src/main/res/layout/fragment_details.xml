@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+                name="viewModel"
+                type="pl.nemolab.simplegallery.screen.item.DetailsViewModel" />
+
+    </data>
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:fitsSystemWindows="true">
+
+        <ImageView
+                app:imageUrl="@{viewModel.url}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
+
+            <Button
+                    android:text="publiczne"
+                    app:isVisibleOrInvisible="@{viewModel.isPublicVisibility}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <Button
+                    android:text="dla przyjaciół"
+                    app:isVisibleOrInvisible="@{viewModel.isFriendVisibility}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <Button
+                    android:text="rodzinne"
+                    app:isVisibleOrInvisible="@{viewModel.isFamilyVisibility}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>
