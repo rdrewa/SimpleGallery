@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import pl.nemolab.simplegallery.data.Photo
 
-class DetailsTabsPagerAdapter(fragmentManager: FragmentManager, photo: Photo) : FragmentPagerAdapter(fragmentManager) {
+class DetailsTabsPagerAdapter(fragmentManager: FragmentManager, val titles: List<String>, photo: Photo) : FragmentPagerAdapter(fragmentManager) {
 
     companion object {
         const val TAB_COUNTER = 2
@@ -18,5 +18,7 @@ class DetailsTabsPagerAdapter(fragmentManager: FragmentManager, photo: Photo) : 
     }
 
     override fun getCount() = TAB_COUNTER
+
+    override fun getPageTitle(position: Int) = if (titles.isNotEmpty() && position < titles.size) titles[position] else "#$position#"
 
 }

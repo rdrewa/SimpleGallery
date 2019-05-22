@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import pl.nemolab.simplegallery.data.Photo
 import pl.nemolab.simplegallery.databinding.ItemPhotoBinding
+import pl.nemolab.simplegallery.screen.main.PhotoViewModel
 
 class PhotoAdapter(val context: Context, val items: List<Photo>, val clickAction: (Photo) -> (Unit)): RecyclerView.Adapter<PhotoAdapter.PhotoHolder>() {
 
@@ -21,7 +22,7 @@ class PhotoAdapter(val context: Context, val items: List<Photo>, val clickAction
 
     inner class PhotoHolder(private val binding: ItemPhotoBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(photo: Photo) {
-            binding.viewModel = photo
+            binding.viewModel = PhotoViewModel(photo, clickAction)
             binding.executePendingBindings()
         }
     }

@@ -37,10 +37,12 @@ class DetailsActivity: AppCompatActivity() {
                 .commit()
         }
         setupTabs()
+        title = getPhoto().title
     }
 
     private fun setupTabs() {
-        binding.viewPager.adapter = DetailsTabsPagerAdapter(supportFragmentManager, getPhoto())
+        binding.viewPager.adapter = DetailsTabsPagerAdapter(supportFragmentManager, listOf("Polubienia", "Komentarze"), getPhoto())
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
     }
 
     private fun getPhoto() = intent.getSerializableExtra(DetailsFragment.ARG_PHOTO) as Photo

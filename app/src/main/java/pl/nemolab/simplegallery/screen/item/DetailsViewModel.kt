@@ -5,15 +5,15 @@ import pl.nemolab.simplegallery.data.Photo
 
 class DetailsViewModel: ViewModel() {
 
-    lateinit var photo: Photo
+    var photo: Photo? = null
 
-    val isPublicVisibility = photo.isPublic != 0
+    fun getPublicVisibility() = photo?.isPublic != 0
 
-    val isFamilyVisibility = photo.isFamily != 0
+    fun getFamilyVisibility() = photo?.isFamily != 0
 
-    val isFriendVisibility = photo.isFriend != 0
+    fun getFriendVisibility() = photo?.isFriend != 0
 
-    val url = photo.url
+    fun getUrlImage() = photo?.url
 
     fun onViewCreated() {
 

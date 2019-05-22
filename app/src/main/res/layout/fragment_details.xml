@@ -10,42 +10,44 @@
 
     </data>
 
-    <FrameLayout
+    <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="bottom"
-            android:layout_marginTop="?attr/actionBarSize"
-            android:fitsSystemWindows="true">
+            android:fitsSystemWindows="true" android:orientation="vertical">
 
         <ImageView
-                app:imageUrl="@{viewModel.url}"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                app:imageUrl="@{viewModel.urlImage}"
+                android:scaleType="fitXY"
+                android:layout_gravity="center"
+                android:layout_width="300dp"
+                android:layout_height="200dp"/>
 
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
+                      android:gravity="center"
                       android:orientation="horizontal">
 
             <Button
                     android:text="publiczne"
-                    app:isVisibleOrInvisible="@{viewModel.isPublicVisibility}"
+                    app:isVisibleOrInvisible="@{viewModel.publicVisibility}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
             <Button
                     android:text="dla przyjaciół"
-                    app:isVisibleOrInvisible="@{viewModel.isFriendVisibility}"
+                    app:isVisibleOrInvisible="@{viewModel.friendVisibility}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
             <Button
                     android:text="rodzinne"
-                    app:isVisibleOrInvisible="@{viewModel.isFamilyVisibility}"
+                    app:isVisibleOrInvisible="@{viewModel.familyVisibility}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
-    </FrameLayout>
+    </LinearLayout>
 
 </layout>
