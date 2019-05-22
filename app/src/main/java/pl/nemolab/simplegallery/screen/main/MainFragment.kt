@@ -51,7 +51,7 @@ class MainFragment: Fragment() {
     private fun subscribe() {
         viewModel.photoList.observe(this, Observer { photoList ->
             photoList?.let { photoList ->
-                binding.recycler.adapter = PhotoAdapter(context!!, photoList) {
+                binding.recycler.adapter = PhotoAdapter(photoList) {
                     startActivity(DetailsActivity.newIntent(context!!, it))
                 }
                 binding.recycler.adapter?.notifyDataSetChanged()

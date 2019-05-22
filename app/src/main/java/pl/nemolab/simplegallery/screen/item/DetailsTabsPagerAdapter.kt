@@ -12,8 +12,8 @@ class DetailsTabsPagerAdapter(fragmentManager: FragmentManager, val titles: List
     }
 
     override fun getItem(position: Int): Fragment = when (position) {
-        0 -> ListFragment.newInstance()
-        1 -> ListFragment.newInstance()
+        0 -> ListFragment.newInstance(arrayListOf("Stefan Telefan", "Pan Ambroży", "Tytus, Romek i Atomek"), "Nic nie ma")
+        1 -> ListFragment.newInstance(arrayListOf(), "Nikt nie skomentował :(")
         else -> Fragment()
     }
 
