@@ -5,8 +5,6 @@ import androidx.databinding.BindingAdapter
 
 object ViewBindingAdapter {
 
-    const val FADE_DURATION = 1000L
-
     @BindingAdapter("isVisibleOrGone")
     @JvmStatic
     fun isVisibleOrGone(view: View, visibility: Boolean) {

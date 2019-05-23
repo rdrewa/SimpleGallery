@@ -5,6 +5,7 @@ import java.io.Serializable
 
 
 data class Photo(
+    val person: List<Person> = emptyList(),
     val id: String,
     val owner: String,
     val secret: String,

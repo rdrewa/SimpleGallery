@@ -1,9 +1,12 @@
 package pl.nemolab.simplegallery.api
 
 import androidx.lifecycle.LiveData
+import pl.nemolab.simplegallery.data.CommentsResponse
+import pl.nemolab.simplegallery.data.FavouritesResponse
 import pl.nemolab.simplegallery.data.RecentResponse
 import pl.nemolab.simplegallery.rest.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface FlickrService {
 
@@ -14,4 +17,10 @@ interface FlickrService {
 
     @GET("?method=flickr.photos.getRecent&extras=url_s")
     fun getRecent(): LiveData<Response<RecentResponse>>
+
+    @GET("?method=flickr.photos.getFavorites&photo_id={photoId}")
+    fun getFavourites(@Path("photoId") photoId: Int): LiveData<Response<FavouritesResponse>>
+
+    @GET("?method=flickr.photos.comments.getList&photo_id={photoId}")
+    fun getComments(@Path("photoId") photoId: Int): LiveData<Response<CommentsResponse>>
 }
